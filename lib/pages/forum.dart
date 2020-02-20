@@ -8,56 +8,55 @@ class ForumPage extends StatefulWidget {
 }
 
 class _ForumPageState extends State<ForumPage> {
-  @override
-  Widget build(BuildContext context) {
-
-    var topCategoryIcons = Container(
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Uidata.primaryColor,
-            Uidata.accentColor
-          ],
+  /// Top Icons
+  var topCategoyIcons = new Container(
+    alignment: Alignment.center,
+    decoration: new BoxDecoration(
+        gradient: new LinearGradient(
+      colors: [
+       Uidata.primaryColor,
+       Uidata.accentColor
+      ],
       begin: const FractionalOffset(0.0, 0.0),
       end: const FractionalOffset(0.0, 1.0),
       stops: [0.0, 1.0],
       tileMode: TileMode.clamp,
-        )
-      ),
-      child: Container(
-        alignment: Alignment.bottomCenter,
+    )),
+    child: new Container(
+      alignment: Alignment.bottomCenter,
       margin: const EdgeInsets.symmetric(
         horizontal: 10.0,
         vertical: 0.0,
       ),
       decoration: new BoxDecoration(
-        color: Uidata.accentColor,
+        color: AppColorsTheme.myTheme.secondaryGradientColor,
         // border: new Border.all(color: Colors.black, width: 1.0),
         borderRadius: new BorderRadius.only(
           topLeft: new Radius.circular(30.0),
           topRight: new Radius.circular(30.0),
         ),
       ),
-      child: Row(
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          CategoryIcon(Icons.landscape, "Nature", true),
-          CategoryIcon(Icons.headset, "Music", false),
-          CategoryIcon(Icons.headset, "Music", false),
-          CategoryIcon(Icons.headset, "Music", false),
+          new CategoryIcon(Icons.landscape, "Nature", true),
+          new CategoryIcon(Icons.headset, "Music", false),
+          new CategoryIcon(Icons.movie, "Movies", false),
+          new CategoryIcon(Icons.place, "Places", false),
         ],
       ),
-      ),
-    );
+    ),
+  );
 
-    var categoryMetric = new Container(
+  var categoryMetric = new Container(
     padding: const EdgeInsets.all(5.0),
     margin: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 15.0),
     decoration: new BoxDecoration(
       gradient: new LinearGradient(
         colors: [
-          Uidata.primaryColor,
-          Uidata.accentColor
+          AppColorsTheme.myTheme.secondaryGradientColor,
+          AppColorsTheme.myTheme.secondaryGradientColor
         ],
         begin: const FractionalOffset(0.0, 0.5),
         end: const FractionalOffset(0.0, 1.0),
@@ -82,22 +81,47 @@ class _ForumPageState extends State<ForumPage> {
     ),
   );
 
+  static final listItemsData = [
+    new ListEntry("Forum 1", "test", "description 1", 54, 2, true),
+    new ListEntry("Forum 2", "test", "description 2",  154, 3,false),
+    new ListEntry("Forum 3", "test", "description 3", 971, 0, false),
+    new ListEntry("Forum 4", "test", "description 4",  124, 2,true),
+    new ListEntry("Forum 5", "test", "description 5",  412, 5,true),
+    new ListEntry("Forum 6", "test", "description 6",  12, 1,true),
+  ];
+  var listView = new ListView.builder(
+    itemBuilder: (BuildContext context, int index) =>
+        new EntryItem(listItemsData[index]),
+    itemCount: listItemsData.length,
+    shrinkWrap: true,
+  );
 
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Forum"),
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        centerTitle: false,
+        elevation: 0.0,
+        title: new Text(
+          widget.title,
+          textScaleFactor: 1.3,
+        ),
+        actions: <Widget>[
+          new IconButton(
+            icon: new Icon(Icons.search),
+            onPressed: _onSearchPressed,
+          ),
+        ],
       ),
-      body: Container(
+      body: new Container(
         child: new Column(
-          children: <Widget>[
-            topCategoryIcons,
-            categoryMetric,
-            // listView
-            ],
+          children: <Widget>[topCategoyIcons, categoryMetric, listView],
         ),
       ),
     );
+  }
+  void _onSearchPressed() {
+    Navigator.pop(context);
   }
 }
 
