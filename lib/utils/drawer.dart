@@ -90,7 +90,7 @@ class _DrawerClassState extends State<DrawerClass> {
                   title: Text("Forum"),
                   leading: Icon(Icons.speaker_notes, color: Uidata.primaryColor,),
                   onTap: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ForumPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ForumPage()));
                   },
                 ),
                 Divider(),
