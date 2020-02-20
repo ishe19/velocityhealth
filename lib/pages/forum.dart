@@ -3,6 +3,12 @@ import 'package:velocityhealth/utils/uidata.dart';
 
 
 class ForumPage extends StatefulWidget {
+
+  ForumPage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+
   @override
   _ForumPageState createState() => _ForumPageState();
 }
@@ -29,7 +35,7 @@ class _ForumPageState extends State<ForumPage> {
         vertical: 0.0,
       ),
       decoration: new BoxDecoration(
-        color: AppColorsTheme.myTheme.secondaryGradientColor,
+        color: Uidata.accentColor,
         // border: new Border.all(color: Colors.black, width: 1.0),
         borderRadius: new BorderRadius.only(
           topLeft: new Radius.circular(30.0),
@@ -55,8 +61,8 @@ class _ForumPageState extends State<ForumPage> {
     decoration: new BoxDecoration(
       gradient: new LinearGradient(
         colors: [
-          AppColorsTheme.myTheme.secondaryGradientColor,
-          AppColorsTheme.myTheme.secondaryGradientColor
+          Uidata.primaryColor,
+          Uidata.accentColor
         ],
         begin: const FractionalOffset(0.0, 0.5),
         end: const FractionalOffset(0.0, 1.0),
@@ -152,5 +158,50 @@ class CategoryIcon extends StatelessWidget {
   }
 
   static void _onSearchPressed() {
+  }
+}
+
+class ListEntry {
+  final String title;
+  final String icon;
+  final String description;
+  final int views;
+  final int responses;
+  final bool answered;
+
+  ListEntry(this.title, this.icon, this.description, this.views, this.responses, this.answered);
+}
+
+class EntryItem extends StatelessWidget {
+  const EntryItem(this.entry);
+
+  final ListEntry entry;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: const EdgeInsets.all(3.0),
+      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 3.0),
+      decoration: new BoxDecoration(
+        color: Uidata.accentColor,
+        borderRadius: new BorderRadius.all(new Radius.circular(15.0)),
+      ),
+      child: new ListTile(
+        title: new Text(entry.title),
+        subtitle: new Text(entry.description),
+        leading: new Icon(
+          Icons.dashboard,
+          color: Uidata.primaryColor,
+        ),
+        trailing: new Row(
+          verticalDirection: VerticalDirection.up,
+          children: <Widget>[
+            new CategoryIcon(Icons.remove_red_eye, entry.views.toString(), false),
+            new CategoryIcon(Icons.comment, entry.responses.toString(), false),
+          ],
+        ),
+        onTap: () {Navigator.pushNamed(context, '/forum/1');},
+      ),
+    );
   }
 }
