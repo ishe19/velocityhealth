@@ -96,8 +96,10 @@ class _ForumPageState extends State<ForumPage> {
     new ListEntry("Forum 6", "test", "description 6",  12, 1,true),
   ];
   var listView = new ListView.builder(
-    itemBuilder: (BuildContext context, int index) =>
-        new EntryItem(listItemsData[index]),
+    itemBuilder: (BuildContext context, int index) {
+      return Test(context);
+    },
+        // new EntryItem(listItemsData[index]),
     itemCount: listItemsData.length,
     shrinkWrap: true,
   );
@@ -121,7 +123,12 @@ class _ForumPageState extends State<ForumPage> {
       ),
       body: new Container(
         child: new Column(
-          children: <Widget>[topCategoyIcons, categoryMetric, listView],
+          children: <Widget>[
+            topCategoyIcons, 
+            categoryMetric, 
+            // listView
+
+            ],
         ),
       ),
     );
@@ -204,4 +211,31 @@ class EntryItem extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget Test(BuildContext context) {
+  return Container(
+      padding: const EdgeInsets.all(3.0),
+      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 3.0),
+      decoration: new BoxDecoration(
+        color: Uidata.accentColor,
+        borderRadius: new BorderRadius.all(new Radius.circular(15.0)),
+      ),
+      child: new ListTile(
+        title: new Text("entry.title"),
+        subtitle: new Text("entry.description"),
+        leading: new Icon(
+          Icons.dashboard,
+          color: Uidata.primaryColor,
+        ),
+        trailing: new Row(
+          verticalDirection: VerticalDirection.up,
+          children: <Widget>[
+            new CategoryIcon(Icons.remove_red_eye, "entry.views.toString()", false),
+            new CategoryIcon(Icons.comment, "entry.responses.toString()", false),
+          ],
+        ),
+        onTap: () {Navigator.pushNamed(context, '/forum/1');},
+      ),
+    );
 }
