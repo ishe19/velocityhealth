@@ -14,6 +14,7 @@ class WeightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 5.0,
       margin: EdgeInsets.only(
         left: screenAwareSize(16.0, context),
         right: screenAwareSize(4.0, context),

@@ -6,6 +6,8 @@ import 'package:velocityhealth/bmi_calculator/input_page/gender/gender_styles.da
 import 'package:velocityhealth/bmi_calculator/model/gender.dart';
 import 'package:velocityhealth/bmi_calculator/widget_utils.dart' show screenAwareSize;
 import 'package:flutter/material.dart';
+// import 'package:clay_containers/clay_containers.dart';
+import 'package:neumorphic/neumorphic.dart';
 
 class GenderCard extends StatefulWidget {
   final Gender gender;
@@ -45,6 +47,7 @@ class _GenderCardState extends State<GenderCard>
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 5.0,  
       margin: EdgeInsets.only(
         left: screenAwareSize(16.0, context),
         right: screenAwareSize(4.0, context),

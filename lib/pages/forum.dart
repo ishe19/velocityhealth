@@ -50,6 +50,38 @@ class _ForumPageState extends State<ForumPage> {
       ),
     );
 
+    var categoryMetric = new Container(
+    padding: const EdgeInsets.all(5.0),
+    margin: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 15.0),
+    decoration: new BoxDecoration(
+      gradient: new LinearGradient(
+        colors: [
+          Uidata.primaryColor,
+          Uidata.accentColor
+        ],
+        begin: const FractionalOffset(0.0, 0.5),
+        end: const FractionalOffset(0.0, 1.0),
+        stops: [0.0, 1.0],
+        tileMode: TileMode.clamp,
+      ),
+      // border: new Border.all(color: Colors.black, width: 1.0),
+      borderRadius: new BorderRadius.only(
+        bottomLeft: new Radius.circular(30.0),
+        bottomRight: new Radius.circular(30.0),
+      ),
+    ),
+    child: new Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        new CategoryIcon(Icons.cake, "Food", false),
+        new CategoryIcon(Icons.book, "Book", false),
+        new CategoryIcon(Icons.games, "Games", false),
+        new CategoryIcon(Icons.history, "History", false),
+      ],
+    ),
+  );
+
 
 
     return Scaffold(
@@ -60,7 +92,7 @@ class _ForumPageState extends State<ForumPage> {
         child: new Column(
           children: <Widget>[
             topCategoryIcons,
-            // categoryMetric,
+            categoryMetric,
             // listView
             ],
         ),

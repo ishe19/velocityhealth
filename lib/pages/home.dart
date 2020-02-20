@@ -3,7 +3,6 @@ import 'package:velocityhealth/bmi_calculator/input_page/input_page.dart';
 import 'package:neumorphic/neumorphic.dart' as neu;
 import 'package:clay_containers/clay_containers.dart' as clay;
 import 'package:velocityhealth/utils/drawer.dart';
-import 'package:velocityhealth/utils/leader_board.dart';
 import 'package:velocityhealth/utils/uidata.dart';
 
 
@@ -69,19 +68,25 @@ class _HomeState extends State<Home> {
               child: clay.ClayContainer(
                     height: 180.0,
                     width: screenSizeWidth,
-                    child: Stack(
-                      fit: StackFit.expand,
-                        children: <Widget> [
-                          Image(
-                            height: 180.0,
-                            fit: BoxFit.cover,
-                            image: AssetImage("assets/images/appbar.jpg"),
-                          ),
-                      Padding(
-                        padding: const EdgeInsets.only(top:150.0),
-                        child: Text("A Healthier Lifestyle", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0 ))
-                      )
-                              ]
+                    child: InkWell(
+                      onTap: () {
+                        print("BMI NIGGA!!!!!");
+                      },
+                        child: Stack(
+                        fit: StackFit.expand,
+                          children: <Widget> [
+                            Image(
+                              height: 180.0,
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/images/appbar.jpg"),
+                            ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:50.0),
+                          child: Text("A Healthier Lifestyle", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0 ))
+                        ),
+                       
+                                ]
+                      ),
                     ),                        
               ),
             ),
@@ -93,23 +98,26 @@ class _HomeState extends State<Home> {
             Padding(
                   padding: const EdgeInsets.only(top: 10),
             ),
-            clay.ClayContainer(
-                  height: 150.0,
-                  width: screenSizeWidth / 1.05,
-                  color:  Colors.grey.shade300,
-                  child: ListView.builder(
-                        itemCount: leaderBoard.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          int i =  index + 1;
-                          return Card(
-                            elevation: 2.0,
-                            child: ListTile(
-                            leading: Text("$i.)", style: TextStyle(fontWeight: FontWeight.bold)),
-                            title: Text(leaderBoard[index], style: TextStyle(fontWeight: FontWeight.bold),),
-                            trailing: Text(leaderBoardPoints[index], style: TextStyle(fontWeight: FontWeight.bold),),
-                          ));
-                        },
-                      ),
+            Padding(
+              padding: const EdgeInsets.only(left: 0.0),
+              child: clay.ClayContainer(
+                    height: 150.0,
+                    width: screenSizeWidth,
+                    color:  Colors.grey.shade300,
+                    child: ListView.builder(
+                          itemCount: leaderBoard.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            int i =  index + 1;
+                            return Card(
+                              elevation: 2.0,
+                              child: ListTile(
+                              leading: Text("$i.)", style: TextStyle(fontWeight: FontWeight.bold)),
+                              title: Text(leaderBoard[index], style: TextStyle(fontWeight: FontWeight.bold),),
+                              trailing: Text(leaderBoardPoints[index], style: TextStyle(fontWeight: FontWeight.bold),),
+                            ));
+                          },
+                        ),
+              ),
             )
           ],),
         ),
@@ -118,13 +126,13 @@ class _HomeState extends State<Home> {
             ),
         // LeaderBoard()
         cardStyle("assets/images/financial.jpg", "Financial Wellness"),
-        cardStyle("assets/images/legal.jpg", "Environmental Wellness"),
+        cardStyle("assets/images/nutri.jpg", "Environmental Wellness"),
         cardStyle("assets/images/mental.jpg", "Intellectual Wellness"),
-        cardStyle("assets/images/nutri.jpg", "Spiritual Wellness"),
-        cardStyle("assets/images/nutri.jpg", "Occupational Wellness"),
-        cardStyle("assets/images/nutri.jpg", "Emotional Wellness"),
+        cardStyle("assets/images/empwell.png", "Spiritual Wellness"),
+        cardStyle("assets/images/legal.jpg", "Occupational Wellness"),
+        cardStyle("assets/images/appbar.jpg", "Emotional Wellness"),
         cardStyle("assets/images/nutri.jpg", "Social Wellness"),
-        cardStyle("assets/images/nutri.jpg", "Physical Wellness"),
+        cardStyle("assets/images/exercise.png", "Physical Wellness"),
                 ],
               ),
       ),
@@ -152,7 +160,7 @@ class _HomeState extends State<Home> {
                         child: Container(
                           color: Colors.grey.shade300,
                           height: 100,
-                          width: MediaQuery.of(context).size.width /1.2,
+                          width: MediaQuery.of(context).size.width,
                           child:
                             Padding(
                               padding: const EdgeInsets.only(left: 70.0),
@@ -185,8 +193,7 @@ class _HomeState extends State<Home> {
                     ),
                     ),
                   ),
-                  clay.ClayContainer(
-                    child: ClipRRect(
+                  ClipRRect(
                       borderRadius: BorderRadius.circular(30.0),
                         child: Container(
                           child: Image(
@@ -197,7 +204,7 @@ class _HomeState extends State<Home> {
                       ),
                         ),
                     ),
-                  )
+                  
                 ],
               ),
             ),

@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:velocityhealth/bmi_calculator/widget_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:velocityhealth/utils/uidata.dart';
 
 const double _pacmanWidth = 21.0;
 const double _sliderHorizontalMargin = 24.0;
@@ -64,12 +65,34 @@ class _PacmanSliderState extends State<PacmanSlider>
           animation: widget.submitAnimationController,
           builder: (context, child) {
             Decoration decoration = BoxDecoration(
+              // boxShadow: <BoxShadow>[
+              //       BoxShadow(
+              //         color: Colors.blue,
+              //         offset: Offset(1.0, 6.0),
+              //         blurRadius: 20.0,
+              //       ),
+              //       BoxShadow(
+              //         color: Uidata.accentColor,
+              //         offset: Offset(1.0, 6.0),
+              //         blurRadius: 20.0,
+              //       ),
+              //     ],
+              gradient: new LinearGradient(
+                      colors: [
+                        Uidata.primaryColor,
+                        Uidata.accentColor
+                      ],
+                      begin: const FractionalOffset(0.1, 0.1),
+                      end: const FractionalOffset(1.0, 1.0),
+                      stops: [0.0, 1.0],
+                      tileMode: TileMode.clamp),
               borderRadius: _bordersAnimation.value,
               color: Theme.of(context).primaryColor,
             );
 
             return Center(
               child: Container(
+                
                 height: screenAwareSize(52.0, context),
                 width: width,
                 decoration: decoration,

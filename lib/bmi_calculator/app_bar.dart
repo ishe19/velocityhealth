@@ -24,7 +24,7 @@ class BmiAppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               _buildLabel(context),
-              _buildIcon(context),
+              // _buildIcon(context),
             ],
           ),
         ),
@@ -32,16 +32,16 @@ class BmiAppBar extends StatelessWidget {
     );
   }
 
-  Padding _buildIcon(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: screenAwareSize(11.0, context)),
-      child: SvgPicture.asset(
-        'assets/images/user.svg',
-        height: screenAwareSize(20.0, context),
-        width: screenAwareSize(20.0, context),
-      ),
-    );
-  }
+  // Padding _buildIcon(BuildContext context) {
+  //   return Padding(
+  //     padding: EdgeInsets.only(bottom: screenAwareSize(11.0, context)),
+  //     child: SvgPicture.asset(
+  //       'assets/images/user.svg',
+  //       height: screenAwareSize(20.0, context),
+  //       width: screenAwareSize(20.0, context),
+  //     ),
+  //   );
+  // }
 
   RichText _buildLabel(BuildContext context) {
     return RichText(
@@ -49,7 +49,7 @@ class BmiAppBar extends StatelessWidget {
         style: DefaultTextStyle.of(context).style.copyWith(fontSize: 34.0),
         children: [
           TextSpan(
-            text: isInputPage ? "Hi Ishe" : "Your BMI",
+            text: isInputPage ? "Hi User" : "Your BMI",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           TextSpan(text: isInputPage ? getEmoji(context) : ""),

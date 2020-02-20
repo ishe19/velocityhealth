@@ -13,6 +13,7 @@ class HeightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 5.0,
       margin: EdgeInsets.only(
         right: screenAwareSize(16.0, context),
         left: screenAwareSize(4.0, context),

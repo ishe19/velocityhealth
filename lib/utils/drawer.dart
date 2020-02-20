@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:velocityhealth/bmi_calculator/input_page/input_page.dart';
 import 'package:velocityhealth/pages/forum.dart';
 import 'package:velocityhealth/pages/log_in.dart';
 import 'package:velocityhealth/utils/uidata.dart';
@@ -94,13 +95,12 @@ class _DrawerClassState extends State<DrawerClass> {
                 ),
                 Divider(),
 
-
                 ListTile(
                   //Settings
-                  title: Text("Profile"),
-                  leading: Icon(Icons.person_outline, color: Uidata.primaryColor,),
+                  title: Text("Body Mass Index Calculator"),
+                  leading: Icon(Icons.directions_run, color: Uidata.primaryColor,),
                   onTap: () {
-                    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Loading2Refresh(widget.userName, widget.userEmail)));
+                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => InputPage()));
                   },
                 ),
                 Divider(),
@@ -108,8 +108,21 @@ class _DrawerClassState extends State<DrawerClass> {
 
                 ListTile(
                   //Settings
-                  title: Text("Refresh"),
-                  leading: Icon(Icons.refresh, color: Uidata.primaryColor,),
+                  title: Text("Profile"),
+                  leading: Icon(Icons.person, color: Uidata.primaryColor,),
+                  onTap: () {
+                    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => InputPage()));
+                  },
+                ),
+                Divider(),
+
+                
+
+
+                ListTile(
+                  //Settings
+                  title: Text("About Us"),
+                  leading: Icon(Icons.help, color: Uidata.primaryColor,),
                   onTap: () {
                     // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Loading2Refresh(widget.userName, widget.userEmail)));
                   },
@@ -121,7 +134,6 @@ class _DrawerClassState extends State<DrawerClass> {
                   title: Text("Log Out"),
                   leading: Icon(Icons.exit_to_app, color: Uidata.primaryColor,),
                   onTap: () {
-                    //Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
                   },
                 
