@@ -84,41 +84,6 @@ class _DrawerClassState extends State<DrawerClass> {
           Expanded(
             child: ListView(
               children: <Widget>[
-
-                ListTile(
-                  //Settings
-                  title: Text("Forum"),
-                  leading: Icon(Icons.speaker_notes, color: Uidata.primaryColor,),
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ForumPage()));
-                  },
-                ),
-                Divider(),
-
-                ListTile(
-                  //Settings
-                  title: Text("Body Mass Index Calculator"),
-                  leading: Icon(Icons.directions_run, color: Uidata.primaryColor,),
-                  onTap: () {
-                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => InputPage()));
-                  },
-                ),
-                Divider(),
-
-
-                ListTile(
-                  //Settings
-                  title: Text("Profile"),
-                  leading: Icon(Icons.person, color: Uidata.primaryColor,),
-                  onTap: () {
-                    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => InputPage()));
-                  },
-                ),
-                Divider(),
-
-                
-
-
                 ListTile(
                   //Settings
                   title: Text("About Us"),

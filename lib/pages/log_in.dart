@@ -6,6 +6,7 @@ import 'package:velocityhealth/utils/bubble_indication_painter.dart';
 import 'package:velocityhealth/utils/uidata.dart';
 
 import 'home.dart';
+import 'landing_page.dart';
 
 
 // import 'home.dart';
@@ -42,6 +43,7 @@ class _LoginPageState extends State<LoginPage>
   bool _obscureTextSignupConfirm = true;
 
   TextEditingController signupEmailController = new TextEditingController();
+  TextEditingController signupIDController = new TextEditingController();
   TextEditingController signupNameController = new TextEditingController();
   TextEditingController signupPasswordController = new TextEditingController();
   TextEditingController signupConfirmPasswordController =
@@ -79,7 +81,7 @@ class _LoginPageState extends State<LoginPage>
   Future validateAndSubmit() async {
     if (validateForm()) {
       try{
-       Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+       Navigator.push(context, MaterialPageRoute(builder: (context) => LandingPage()));
       }catch(e){
         print(e);
       }
@@ -414,7 +416,7 @@ class _LoginPageState extends State<LoginPage>
                       onPressed: () {
                           // validateAndSubmit();
                           // TODO UNCOMMNENT THIS OUT ONCE DONE WITH PROJECTS
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandingPage()));
                       }
                 ),
                 )],
@@ -618,7 +620,7 @@ class _LoginPageState extends State<LoginPage>
                             validator: (val) =>  val.length == 0? "Please enter National ID" : null,
                             onSaved: (value) => nationalID = value,
                             focusNode: myFocusNodeEmail,
-                            controller: signupEmailController,
+                            controller: signupIDController,
                             keyboardType: TextInputType.emailAddress,
                             style: TextStyle(
                                 fontFamily: "WorkSansSemiBold",

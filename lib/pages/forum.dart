@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:velocityhealth/pages/forum_detail.dart';
 import 'package:velocityhealth/utils/uidata.dart';
+import 'package:clay_containers/clay_containers.dart';
 
 
 class ForumPage extends StatefulWidget {
@@ -61,8 +63,8 @@ class _ForumPageState extends State<ForumPage> {
     decoration: new BoxDecoration(
       gradient: new LinearGradient(
         colors: [
+          Colors.grey.shade200,
           Uidata.primaryColor,
-          Uidata.accentColor
         ],
         begin: const FractionalOffset(0.0, 0.5),
         end: const FractionalOffset(0.0, 1.0),
@@ -79,10 +81,10 @@ class _ForumPageState extends State<ForumPage> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        new CategoryIcon(Icons.cake, "Food", false),
-        new CategoryIcon(Icons.book, "Book", false),
-        new CategoryIcon(Icons.games, "Games", false),
-        new CategoryIcon(Icons.history, "History", false),
+        new CategoryIcon(Icons.cake, "Topic 1", false),
+        new CategoryIcon(Icons.book, "Topic 2", false),
+        new CategoryIcon(Icons.games, "Topic 3", false),
+        new CategoryIcon(Icons.history, "Topic 4", false),
       ],
     ),
   );
@@ -95,24 +97,25 @@ class _ForumPageState extends State<ForumPage> {
     new ListEntry("Forum 5", "test", "description 5",  412, 5,true),
     new ListEntry("Forum 6", "test", "description 6",  12, 1,true),
   ];
+
+
   var listView = new ListView.builder(
-    itemBuilder: (BuildContext context, int index) {
-      return Test(context);
-    },
-        // new EntryItem(listItemsData[index]),
+    itemBuilder: (BuildContext context, int index) =>
+        new EntryItem(listItemsData[index]),
     itemCount: listItemsData.length,
     shrinkWrap: true,
   );
+
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        centerTitle: false,
-        elevation: 0.0,
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 2.0,
         title: new Text(
           widget.title,
-          textScaleFactor: 1.3,
         ),
         actions: <Widget>[
           new IconButton(
@@ -121,21 +124,24 @@ class _ForumPageState extends State<ForumPage> {
           ),
         ],
       ),
-      body: new Container(
-        child: new Column(
-          children: <Widget>[
-            topCategoyIcons, 
-            categoryMetric, 
-            // listView
-
-            ],
-        ),
-      ),
+      body:  Container(
+          child: new ListView(
+            children: <Widget>[
+              // topCategoyIcons, 
+              categoryMetric, 
+              listView
+              
+              
+              
+        //       ],
+             ] // 
+    )),
     );
   }
   void _onSearchPressed() {
     Navigator.pop(context);
   }
+
 }
 
 
@@ -190,52 +196,24 @@ class EntryItem extends StatelessWidget {
       padding: const EdgeInsets.all(3.0),
       margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 3.0),
       decoration: new BoxDecoration(
-        color: Uidata.accentColor,
+        // color: Uidata.accentColor,
         borderRadius: new BorderRadius.all(new Radius.circular(15.0)),
       ),
-      child: new ListTile(
-        title: new Text(entry.title),
-        subtitle: new Text(entry.description),
-        leading: new Icon(
-          Icons.dashboard,
-          color: Uidata.primaryColor,
+      child: ClayContainer(
+        // color: Colors.white,
+        child: ListTile(
+          title: new Text(entry.title),
+          subtitle: new Text(entry.description),
+          leading: new Icon(
+            Icons.dashboard,
+            color: Uidata.accentColor,
+          ),
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ForumDetailPage(entry.title)));
+            },
         ),
-        trailing: new Row(
-          verticalDirection: VerticalDirection.up,
-          children: <Widget>[
-            new CategoryIcon(Icons.remove_red_eye, entry.views.toString(), false),
-            new CategoryIcon(Icons.comment, entry.responses.toString(), false),
-          ],
-        ),
-        onTap: () {Navigator.pushNamed(context, '/forum/1');},
       ),
     );
   }
 }
 
-Widget Test(BuildContext context) {
-  return Container(
-      padding: const EdgeInsets.all(3.0),
-      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 3.0),
-      decoration: new BoxDecoration(
-        color: Uidata.accentColor,
-        borderRadius: new BorderRadius.all(new Radius.circular(15.0)),
-      ),
-      child: new ListTile(
-        title: new Text("entry.title"),
-        subtitle: new Text("entry.description"),
-        leading: new Icon(
-          Icons.dashboard,
-          color: Uidata.primaryColor,
-        ),
-        trailing: new Row(
-          verticalDirection: VerticalDirection.up,
-          children: <Widget>[
-            new CategoryIcon(Icons.remove_red_eye, "entry.views.toString()", false),
-            new CategoryIcon(Icons.comment, "entry.responses.toString()", false),
-          ],
-        ),
-        onTap: () {Navigator.pushNamed(context, '/forum/1');},
-      ),
-    );
-}

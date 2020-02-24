@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:velocityhealth/utils/uidata.dart';
 
 class ForumDetailPage extends StatefulWidget {
+  final String forumTitle;
+
+  ForumDetailPage(this.forumTitle);
+
   @override
   _ForumDetailPageState createState() => new _ForumDetailPageState();
 }
@@ -54,7 +59,8 @@ class _ForumDetailPageState extends State<ForumDetailPage> {
 
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Forum 1"),
+        backgroundColor: Colors.white,
+        title: new Text(widget.forumTitle),
       ),
       body: new Column(
         children: <Widget>[
@@ -90,14 +96,14 @@ class ForumPost extends StatelessWidget {
     return new Container(
       margin: const EdgeInsets.all(5.0),
       decoration: new BoxDecoration(
-        color: Colors.deepPurple[200],
+        color: Uidata.accentColor,
         borderRadius: const BorderRadius.all(const Radius.circular(20.0)),
       ),
       child: new Column(
         children: <Widget>[
           new Container(
             decoration: new BoxDecoration(
-              color: Colors.deepPurple[300],
+              color: Uidata.accentColor,
               borderRadius: const BorderRadius.only(
                   topLeft: const Radius.circular(20.0),
                   topRight: const Radius.circular(20.0)),

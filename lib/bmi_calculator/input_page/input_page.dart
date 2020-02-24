@@ -33,7 +33,7 @@ class InputPageState extends State<InputPage> with TickerProviderStateMixin {
     );
     _submitAnimationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        _goToResultPage().then((_) => _submitAnimationController.reset());
+        // _goToResultPage().then((_) => _submitAnimationController.reset());
       }
     });
   }
@@ -66,7 +66,7 @@ class InputPageState extends State<InputPage> with TickerProviderStateMixin {
             ],
           ),
         ),
-        TransitionDot(animation: _submitAnimationController),
+        // TransitionDot(animation: _submitAnimationController),
       ],
     );
   }
