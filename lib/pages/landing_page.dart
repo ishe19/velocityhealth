@@ -63,7 +63,7 @@ class _LandingPageState extends State<LandingPage> with SingleTickerProviderStat
       home.Home(),
       bmi.InputPage(),
       forum.ForumPage(title: "Forum"),
-      profile.ProfilePage()
+      profile.UserProfilePage()
 
 
       ],

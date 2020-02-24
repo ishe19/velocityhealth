@@ -67,6 +67,9 @@ flutter:
   - assets/images/legal.jpg
   - assets/images/mental.jpg
   - assets/images/nutri.jpg
+  - assets/images/profile.jpg
+  - assets/images/Kim-Tae-Hee.jpg
+
   
 
 
@@ -82,10 +85,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  #  - family: Schyler
+   #   fonts:
+   #      - asset: assets/fonts/Schyler-Regular.ttf
+   #      - asset: assets/fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
