@@ -416,7 +416,7 @@ class _LoginPageState extends State<LoginPage>
                       onPressed: () {
                           // validateAndSubmit();
                           // TODO UNCOMMNENT THIS OUT ONCE DONE WITH PROJECTS
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandingPage()));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
                       }
                 ),
                 )],
