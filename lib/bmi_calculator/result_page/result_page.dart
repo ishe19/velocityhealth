@@ -52,7 +52,7 @@ class _ResultPageState extends State<ResultPage> {
             padding: const EdgeInsets.only(right: 40.0),
             child: IconButton(
               icon: Icon(
-                Icons.delete,
+                Icons.info,
                 color: Colors.grey,
                 size: 28.0,
               ),

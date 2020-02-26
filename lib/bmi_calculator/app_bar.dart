@@ -44,6 +44,7 @@ class BmiAppBar extends StatelessWidget {
   // }
 
   RichText _buildLabel(BuildContext context) {
+
     return RichText(
       text: TextSpan(
         style: DefaultTextStyle.of(context).style.copyWith(fontSize: 34.0),
@@ -55,6 +56,7 @@ class BmiAppBar extends StatelessWidget {
           TextSpan(text: isInputPage ? getEmoji(context) : ""),
         ],
       ),
+
     );
   }
 

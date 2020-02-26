@@ -1,7 +1,9 @@
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:velocityhealth/pages/Verification.dart';
 import 'package:velocityhealth/style/theme.dart' as Theme;
+import 'package:velocityhealth/utils/DropDown.dart';
 import 'package:velocityhealth/utils/bubble_indication_painter.dart';
 import 'package:velocityhealth/utils/uidata.dart';
 
@@ -54,6 +56,17 @@ class _LoginPageState extends State<LoginPage>
   Color left = Colors.black;
   Color right = Colors.white;
   String name, email, nationalID, password, conPassword;
+
+
+  //dropdown items
+  Item selectedUser;
+  List<Item> users = <Item>[
+    const Item('Android',Icon(Icons.android,color:  const Color(0xFF167F20),)),
+    const Item('Velocity',Icon(Icons.flag,color:  const Color(0xFF167F20),)),
+    const Item('Alphamedia',Icon(Icons.format_indent_decrease,color:  const Color(0xFF167F30),)),
+    const Item('Alphamedia',Icon(Icons.mobile_screen_share,color:  const Color(0xFF167F30),)),
+  ];
+
 
   bool validateForm() {
     if(formkey.currentState.validate()){
@@ -247,7 +260,7 @@ class _LoginPageState extends State<LoginPage>
                 highlightColor: Colors.transparent,
                 onPressed: _onSignInButtonPress,
                 child: Text(
-                  "Existing",
+                  "Login",
                   style: TextStyle(
                       color: left,
                       fontSize: 16.0,
@@ -262,7 +275,7 @@ class _LoginPageState extends State<LoginPage>
                 highlightColor: Colors.transparent,
                 onPressed: _onSignUpButtonPress,
                 child: Text(
-                  "New",
+                  "Register",
                   style: TextStyle(
                       color: right,
                       fontSize: 16.0,
@@ -371,7 +384,7 @@ class _LoginPageState extends State<LoginPage>
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 220.0),
+                  margin: EdgeInsets.only(top: 200.0),
                   decoration: new BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(5.0)),
                     boxShadow: <BoxShadow>[
@@ -545,46 +558,82 @@ class _LoginPageState extends State<LoginPage>
                 child: Container(
                   color: Colors.grey.shade200,
                   width: 300.0,
-                  height: 410.0,
+                  height: 350.0,
                   child: Form(
                     key: formkey2,
                       child: ListView(
                       children: <Widget>[
-                        Padding(
+                       Padding(
                           padding: EdgeInsets.only(
-                              top: 0.0, bottom: 10.0, left: 25.0, right: 25.0),
-                          child: TextFormField(
-                            validator: (val) =>  val.length == 0? "Please enter your Name" : null,
-                            onSaved: (value) => name = value,
-                            focusNode: myFocusNodeName,
-                            controller: signupNameController,
-                            keyboardType: TextInputType.text,
-                            textCapitalization: TextCapitalization.words,
-                            style: TextStyle(
-                                fontFamily: "WorkSansSemiBold",
-                                fontSize: 16.0,
-                                color: Colors.black),
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              icon: Icon(
-                                FontAwesomeIcons.user,
-                                color: Colors.black,
-                              ),
-                              hintText: "Name",
-                              hintStyle: TextStyle(
-                                  fontFamily: "WorkSansSemiBold", fontSize: 16.0),
-                            ),
+                            top: 0.0, bottom: 10.0, left: 25.0, right:25.0,
+
+
                           ),
-                        ),
-                        Container(
-                          width: 250.0,
+child: DropdownButton<Item>(
+  hint: Text("Select Company"),
+  value:  selectedUser,
+  onChanged: (Item Value){
+    setState(() {
+      selectedUser =  Value;
+
+    });
+  },
+  items: users.map((Item user){
+    return DropdownMenuItem<Item>(
+      value: user,
+      child: Row(
+
+        children: <Widget>[
+          user.icon,
+          SizedBox(width: 25,),
+          Text(
+            user.name,
+            style: TextStyle(color: Colors.black),
+
+
+          ),
+
+
+        ],
+      ),
+    );
+  }).toList(),
+
+
+)
+//                              top: 0.0, bottom: 10.0, left: 25.0, right: 25.0),
+//                          child: TextFormField(
+//                            validator: (val) =>  val.length == 0? "Please enter your Name" : null,
+//                            onSaved: (value) => name = value,
+//                            focusNode: myFocusNodeName,
+//                            controller: signupNameController,
+//                            keyboardType: TextInputType.text,
+//                            textCapitalization: TextCapitalization.words,
+//                            style: TextStyle(
+//                                fontFamily: "WorkSansSemiBold",
+//                                fontSize: 16.0,
+//                                color: Colors.black),
+//                            decoration: InputDecoration(
+//                              border: InputBorder.none,
+//                              icon: Icon(
+//                                FontAwesomeIcons.user,
+//                                color: Colors.black,
+//                              ),
+//                              hintText: "Name",
+//                              hintStyle: TextStyle(
+//                                  fontFamily: "WorkSansSemiBold", fontSize: 16.0),
+//                            ),
+                          ),
+
+                       Container(
+                         width: 250.0,
                           height: 1.0,
                           color: Colors.grey[400],
                         ),
 
                         Padding(
                           padding: EdgeInsets.only(
-                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                              top: 00.0, bottom: 20.0, left: 25.0, right: 25.0),
                           child: TextFormField(
                             validator: (val) =>  val.length == 0? "Please enter your Email Address" : null,
                             onSaved: (value) => password = value,
@@ -607,7 +656,6 @@ class _LoginPageState extends State<LoginPage>
                             ),
                           ),
                         ),
-
                         Container(
                           width: 250.0,
                           height: 1.0,
@@ -615,13 +663,12 @@ class _LoginPageState extends State<LoginPage>
                         ),
                         Padding(
                           padding: EdgeInsets.only(
-                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
+                              top: 20.0, bottom: 10.0, left: 25.0, right: 25.0),
                           child: TextFormField(
-                            validator: (val) =>  val.length == 0? "Please enter National ID" : null,
-                            onSaved: (value) => nationalID = value,
-                            focusNode: myFocusNodeEmail,
-                            controller: signupIDController,
-                            keyboardType: TextInputType.emailAddress,
+                            validator: (val) =>  val.length == 0? "Please enter password" : null,
+                            onSaved: (value) => conPassword = value,
+                            controller: signupConfirmPasswordController,
+                            obscureText: _obscureTextSignupConfirm,
                             style: TextStyle(
                                 fontFamily: "WorkSansSemiBold",
                                 fontSize: 16.0,
@@ -629,15 +676,26 @@ class _LoginPageState extends State<LoginPage>
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               icon: Icon(
-                                FontAwesomeIcons.idCard,
+                                FontAwesomeIcons.lock,
                                 color: Colors.black,
                               ),
-                              hintText: "National ID",
+                              hintText: "Password",
                               hintStyle: TextStyle(
                                   fontFamily: "WorkSansSemiBold", fontSize: 16.0),
+                              suffixIcon: GestureDetector(
+                                onTap: _toggleSignupConfirm,
+                                child: Icon(
+                                  _obscureTextSignupConfirm
+                                      ? FontAwesomeIcons.eye
+                                      : FontAwesomeIcons.eyeSlash,
+                                  size: 15.0,
+                                  color: Colors.black,
+                                ),
+                              ),
                             ),
                           ),
                         ),
+
                         Container(
                           width: 250.0,
                           height: 1.0,
@@ -662,7 +720,7 @@ class _LoginPageState extends State<LoginPage>
                                 FontAwesomeIcons.lock,
                                 color: Colors.black,
                               ),
-                              hintText: "Password",
+                              hintText: "Confirm Password",
                               hintStyle: TextStyle(
                                   fontFamily: "WorkSansSemiBold", fontSize: 16.0),
                               suffixIcon: GestureDetector(
@@ -678,54 +736,20 @@ class _LoginPageState extends State<LoginPage>
                             ),
                           ),
                         ),
-                        Container(
-                          width: 250.0,
-                          height: 1.0,
-                          color: Colors.grey[400],
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
-                          child: TextFormField(
-                            validator: (val) =>  val.length == 0? "Please enter password" : null,
-                            onSaved: (value) => conPassword = value,
-                            controller: signupConfirmPasswordController,
-                            obscureText: _obscureTextSignupConfirm,
-                            style: TextStyle(
-                                fontFamily: "WorkSansSemiBold",
-                                fontSize: 16.0,
-                                color: Colors.black),
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              icon: Icon(
-                                FontAwesomeIcons.lock,
-                                color: Colors.black,
-                              ),
-                              hintText: "Re-enter Password",
-                              hintStyle: TextStyle(
-                                  fontFamily: "WorkSansSemiBold", fontSize: 16.0),
-                              suffixIcon: GestureDetector(
-                                onTap: _toggleSignupConfirm,
-                                child: Icon(
-                                  _obscureTextSignupConfirm
-                                      ? FontAwesomeIcons.eye
-                                      : FontAwesomeIcons.eyeSlash,
-                                  size: 15.0,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+
                       ],
                     ),
                   ),
                 ),
               ),
+
+
+
+
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                   child: Container(
-                  margin: EdgeInsets.only(top: 400.0),
+                  margin: EdgeInsets.only(top: 330.0),
                   decoration: new BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(5.0)),
                     boxShadow: <BoxShadow>[
@@ -767,6 +791,7 @@ class _LoginPageState extends State<LoginPage>
                         ),
                       ),
                       onPressed: () {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context)=> VerificationPage()));
                         // validateAndSubmit2();
                           // TODO ONCE FINISHED REMEMBER TO UNCOMMENT THIS OUT
                       }
@@ -809,3 +834,6 @@ class _LoginPageState extends State<LoginPage>
     });
   }
 }
+
+
+
