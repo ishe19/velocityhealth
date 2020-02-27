@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:velocityhealth/bmi_calculator/input_page/input_page.dart';
 import 'package:neumorphic/neumorphic.dart' as neu;
 import 'package:clay_containers/clay_containers.dart' as clay;
 import 'package:velocityhealth/utils/drawer.dart';
@@ -48,15 +47,11 @@ class _HomeState extends State<Home> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(5.0),
+                    borderRadius: BorderRadius.circular(0.0),
                     child: clay.ClayContainer(
                       height: 180.0,
                       width: screenSizeWidth,
-                      child: InkWell(
-                        onTap: () {
-                          print("BMI NIGGA!!!!!");
-                        },
-                        child: Stack(fit: StackFit.expand, children: <Widget>[
+                      child: Stack(fit: StackFit.expand, children: <Widget>[
                           Image(
                             height: 180.0,
                             fit: BoxFit.cover,
@@ -72,7 +67,7 @@ class _HomeState extends State<Home> {
                         ]),
                       ),
                     ),
-                  ),
+                  
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                   ),
@@ -136,7 +131,7 @@ class _HomeState extends State<Home> {
 
   Widget cardStyle(String img, String title) {
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(10.0),
       child: InkWell(
         onTap: () {
           print("PRESSED");
@@ -152,7 +147,7 @@ class _HomeState extends State<Home> {
                     bevel: 0.5,
                     curveType: neu.CurveType.concave,
                     child: Container(
-                      color: Colors.grey.shade300,
+                      // color: Colors.grey.shade300,
                       height: 100,
                       width: MediaQuery.of(context).size.width,
                       child: Padding(
@@ -172,7 +167,7 @@ class _HomeState extends State<Home> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 70.0),
                                 ),
-                                clay.ClayContainer(
+                                Container(
                                   height: 20.0,
                                   // width: 40.0,
                                   child: Text("Read more..."),

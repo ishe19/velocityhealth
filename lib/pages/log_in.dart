@@ -791,7 +791,7 @@ child: DropdownButton<Item>(
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context)=> VerificationPage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> VerificationPage()));
                         // validateAndSubmit2();
                           // TODO ONCE FINISHED REMEMBER TO UNCOMMENT THIS OUT
                       }

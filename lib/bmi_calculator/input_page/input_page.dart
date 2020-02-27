@@ -10,6 +10,7 @@ import 'package:velocityhealth/bmi_calculator/model/gender.dart';
 import 'package:velocityhealth/bmi_calculator/result_page/result_page.dart';
 import 'package:velocityhealth/bmi_calculator/widget_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:velocityhealth/pages/home.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -38,6 +39,12 @@ class InputPageState extends State<InputPage> with TickerProviderStateMixin {
     });
   }
 
+  Future<bool> _onBackPressed() async {
+    await Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
+    return true;
+  }
+
+
   @override
   void dispose() {
     _submitAnimationController.dispose();
@@ -46,28 +53,31 @@ class InputPageState extends State<InputPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Scaffold(
-          appBar: PreferredSize(
-            child: BmiAppBar(),
-            preferredSize: Size.fromHeight(appBarHeight(context)),
+    return WillPopScope(
+      onWillPop: _onBackPressed,
+          child: Stack(
+        children: <Widget>[
+          Scaffold(
+            appBar: PreferredSize(
+              child: BmiAppBar(),
+              preferredSize: Size.fromHeight(appBarHeight(context)),
+            ),
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                InputSummaryCard(
+                  gender: gender,
+                  weight: weight,
+                  height: height,
+                ),
+                Expanded(child: _buildCards(context)),
+                _buildBottom(context),
+              ],
+            ),
           ),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              InputSummaryCard(
-                gender: gender,
-                weight: weight,
-                height: height,
-              ),
-              Expanded(child: _buildCards(context)),
-              _buildBottom(context),
-            ],
-          ),
-        ),
-        TransitionDot(animation: _submitAnimationController),
-      ],
+          TransitionDot(animation: _submitAnimationController),
+        ],
+      ),
     );
   }
 
