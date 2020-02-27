@@ -66,7 +66,7 @@ class _ResultPageState extends State<ResultPage> {
                 DialogButton(
                 child: Text('Got it'),
                 onPressed: (){
-                                    Navigator.pop(context);
+                  Navigator.pop(context);
 
                 },)
               ]).show();
