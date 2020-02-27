@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:velocityhealth/pages/Verification.dart';
+import 'package:velocityhealth/pages/verification.dart';
 import 'package:velocityhealth/style/theme.dart' as Theme;
 import 'package:velocityhealth/utils/DropDown.dart';
 import 'package:velocityhealth/utils/bubble_indication_painter.dart';

@@ -37,6 +37,7 @@ dev_dependencies:
     sdk: flutter
   clay_containers: ^0.2.2
   neumorphic: ^0.1.1+1
+  firebase_auth:
 
 
 
