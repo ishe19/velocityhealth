@@ -1,3 +1,4 @@
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:velocityhealth/bmi_calculator/app_bar.dart';
 import 'package:velocityhealth/bmi_calculator/calculator.dart' as calculator;
 import 'package:velocityhealth/bmi_calculator/input_page/input_page_styles.dart';
@@ -56,7 +57,20 @@ class _ResultPageState extends State<ResultPage> {
                 color: Colors.grey,
                 size: 28.0,
               ),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Alert(
+              context: context,
+              title: 'Body Mass Index',
+              desc:'Body mass index (BMI) is a value derived from the mass (weight) and height of a person. The BMI is defined as the body mass divided by the square of the body height, and is universally expressed in units of kg/m2, resulting from mass in kilograms and height in metres. ',
+              buttons: [
+                DialogButton(
+                child: Text('Got it'),
+                onPressed: (){
+                  Navigator.pop(context);
+
+                },)
+              ]).show();
+              },
             ),
           ),
           Container(

@@ -1,8 +1,3 @@
-
-
-
-
-
 import 'package:flutter/material.dart';
 
 class BmiMeaning extends StatelessWidget {
