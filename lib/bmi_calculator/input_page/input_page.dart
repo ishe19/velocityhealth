@@ -66,7 +66,7 @@ class InputPageState extends State<InputPage> with TickerProviderStateMixin {
             ],
           ),
         ),
-        TransitionDot(animation: _submitAnimationController),
+      //  TransitionDot(animation: _submitAnimationController),
       ],
     );
   }
