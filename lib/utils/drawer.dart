@@ -95,7 +95,7 @@ class _DrawerClassState extends State<DrawerClass> {
                   title: Text("Forum"),
                   leading: Icon(Icons.forum, color: Uidata.primaryColor,),
                   onTap: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ForumPage(title: "Forum",)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ForumPage(title: "Forum",)));
                   },
                 ),
                 Divider(),
@@ -104,7 +104,7 @@ class _DrawerClassState extends State<DrawerClass> {
                   title: Text("BMI Calculator"),
                   leading: Icon(Icons.check_circle_outline, color: Uidata.primaryColor,),
                   onTap: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => InputPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => InputPage()));
                   },
 
                 ),
@@ -114,7 +114,7 @@ class _DrawerClassState extends State<DrawerClass> {
                   title: Text("Profile"),
                   leading: Icon(Icons.person, color: Uidata.primaryColor),
                   onTap: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => UserProfilePage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => UserProfilePage()));
                   },
 
                 ),
@@ -124,7 +124,7 @@ class _DrawerClassState extends State<DrawerClass> {
                   title: Text("About Us"),
                   leading: Icon(Icons.help, color: Uidata.primaryColor,),
                   onTap: () {
-                    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Loading2Refresh(widget.userName, widget.userEmail)));
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => Loading2Refresh(widget.userName, widget.userEmail)));
                   },
                 ),
 

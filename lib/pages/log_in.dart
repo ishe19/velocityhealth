@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage>
   Future validateAndSubmit() async {
     if (validateForm()) {
       try{
-       Navigator.push(context, MaterialPageRoute(builder: (context) => LandingPage()));
+       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandingPage()));
       }catch(e){
         print(e);
       }
@@ -429,7 +429,7 @@ class _LoginPageState extends State<LoginPage>
                       onPressed: () {
                           // validateAndSubmit();
                           // TODO UNCOMMNENT THIS OUT ONCE DONE WITH PROJECTS
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
                       }
                 ),
                 )],
@@ -791,7 +791,7 @@ child: DropdownButton<Item>(
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> VerificationPage()));
+                        Navigator.pop(context, MaterialPageRoute(builder: (BuildContext context)=> VerificationPage()));
                         // validateAndSubmit2();
                           // TODO ONCE FINISHED REMEMBER TO UNCOMMENT THIS OUT
                       }
