@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage>
   Future validateAndSubmit() async {
     if (validateForm()) {
       try{
-       Navigator.push(context, MaterialPageRoute(builder: (context) => LandingPage()));
+       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandingPage()));
       }catch(e){
         print(e);
       }
@@ -332,7 +332,7 @@ class _LoginPageState extends State<LoginPage>
                                 color: Colors.black,
                                 size: 22.0,
                               ),
-                              hintText: "National ID",
+                              hintText: "Email ",
                               hintStyle: TextStyle(
                                   fontFamily: "WorkSansSemiBold", fontSize: 17.0),
                             ),
@@ -429,7 +429,7 @@ class _LoginPageState extends State<LoginPage>
                       onPressed: () {
                           // validateAndSubmit();
                           // TODO UNCOMMNENT THIS OUT ONCE DONE WITH PROJECTS
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
                       }
                 ),
                 )],

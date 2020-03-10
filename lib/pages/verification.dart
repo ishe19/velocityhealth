@@ -18,15 +18,16 @@ class _VerificationPageState extends State<VerificationPage> {
        body:Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30.0)
-              ),
-              hintText: 'Enter your number here '
-            ),
-        //    controller:  _phoneNumberController,
-          ),
+          new Image.asset('assets/images/transparent.png'),
+//          new TextField(
+//            decoration: InputDecoration(
+//              border: OutlineInputBorder(
+//                borderRadius: BorderRadius.circular(30.0)
+//              ),
+//              hintText: 'Enter your number here '
+//            ),
+//        //    controller:  _phoneNumberController,
+//          ),
           Divider(),
           new TextField(
 
@@ -40,7 +41,7 @@ class _VerificationPageState extends State<VerificationPage> {
           ),
 
           new FlatButton(
-            //onPressed: Navigator.pushReplacement( context , build(BuildContext()=>La)),
+            //onPressed: Navigator.push( context , build(BuildContext()=>La)),
        //       onPressed: () => _signInWithPhoneNumber(_smsCodeController.text),
               child: const Text("Sign In"))
         ],
