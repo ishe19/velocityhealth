@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:velocityhealth/bmi_calculator/input_page/input_page.dart';
+import 'package:velocityhealth/pages/chat.dart';
+import 'package:velocityhealth/pages/consultancy.dart';
+import 'package:velocityhealth/pages/calendar.dart';
 import 'package:velocityhealth/pages/forum.dart';
 import 'package:velocityhealth/pages/log_in.dart';
 import 'package:velocityhealth/pages/profile.dart';
+
 import 'package:velocityhealth/utils/uidata.dart';
 
 
@@ -89,13 +93,13 @@ class _DrawerClassState extends State<DrawerClass> {
             child: ListView(
               children: <Widget>[
 
-                
+//
                 ListTile(
                   //Settings
-                  title: Text("Forum"),
+                  title: Text("Chat"),
                   leading: Icon(Icons.forum, color: Uidata.primaryColor,),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ForumPage(title: "Forum",)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyChatScreen()));
                   },
                 ),
                 Divider(),
@@ -110,11 +114,22 @@ class _DrawerClassState extends State<DrawerClass> {
                 ),
                 Divider(),
                 ListTile(
+
                   //Settings
                   title: Text("Profile"),
                   leading: Icon(Icons.person, color: Uidata.primaryColor),
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => UserProfilePage()));
+                  },
+
+                ),
+                Divider(),
+                ListTile(
+                  //Settings
+                  title: Text("Consultancy"),
+                  leading: Icon(Icons.exit_to_app, color: Uidata.primaryColor,),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => PopupMenu()));
                   },
 
                 ),

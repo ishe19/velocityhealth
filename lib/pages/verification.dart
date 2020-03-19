@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:velocityhealth/pages/landing_page.dart';
+
 
 class VerificationPage extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class _VerificationPageState extends State<VerificationPage> {
        body:Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Image.asset('assets/images/transparent.png'),
+          new Image.asset('assets/images/logo.png'),
 //          new TextField(
 //            decoration: InputDecoration(
 //              border: OutlineInputBorder(

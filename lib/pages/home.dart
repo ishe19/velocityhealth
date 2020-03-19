@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:velocityhealth/bmi_calculator/input_page/input_page.dart';
 import 'package:neumorphic/neumorphic.dart' as neu;
 import 'package:clay_containers/clay_containers.dart' as clay;
+import 'package:velocityhealth/pages/calendar.dart';
+import 'package:velocityhealth/pages/forum.dart';
+import 'package:velocityhealth/pages/forum_detail.dart';
 import 'package:velocityhealth/utils/drawer.dart';
 import 'package:velocityhealth/utils/uidata.dart';
 
@@ -29,6 +32,44 @@ class _HomeState extends State<Home> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          PopupMenuButton<int>(
+
+            itemBuilder: (context) => [
+              PopupMenuItem(
+
+                value: 1,
+                child: GestureDetector(
+                  onTap: () {
+                    print("test");
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=> CalendarHome() ));
+                  },
+                  child: ListTile(
+                    title: Text('Set up appointment'),
+                    leading: Icon( Icons.calendar_today)
+
+                    ),
+                  ),
+              ),
+              PopupMenuItem(
+
+                value: 2,
+                child: GestureDetector(
+                  onTap: () {
+                    print("test");
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=> ForumPage(title: 'Forum',) ));
+                  },
+                  child: ListTile(
+                      title: Text('Forum'),
+                      leading: Icon( Icons.calendar_today)
+
+                  ),
+                ),
+              ),
+
+            ],
+          )
+        ],
         title:
             Text("Velocity Wellness", style: TextStyle(color: Colors.black87)),
         centerTitle: true,
